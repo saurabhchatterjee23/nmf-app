@@ -64,11 +64,12 @@ const getFlightEmissionValue = (duration: number): number => {
 };
 
 const getC02ValueFromEmission = (emission: Emission | RecurringEmission): number => {
-  if (
-    emission.emissionType === EmissionType.custom ||
-    emission.emissionType === EmissionType.productScanned
-  ) {
+  if (emission.emissionType === EmissionType.custom) {
     return emission.value;
+  }
+
+  if (emission.emissionType === EmissionType.productScanned) {
+    return emission.value * emission.carbonFootprint;
   }
 
   if (emission.emissionType === EmissionType.electricity) {

@@ -38,6 +38,7 @@ interface EmissionPayload {
   value: number;
   creationDate: string;
   location?: ElectricityType;
+  carbonFootprint?: number;
 }
 
 interface Emission extends EmissionPayload {

@@ -16,11 +16,12 @@ const MAX_SLIDER_VALUE = 10;
 
 interface Props {
   productCarbonFootprint: number;
-  setCo2eqKilograms: (arg0: number) => void;
+  defaultValueSlider:number;
+  setProductScannedQuantity: (arg0: number) => void;
 }
 
-const ProductScanned: React.FC<Props> = ({ setCo2eqKilograms, productCarbonFootprint }) => {
-  const [sliderValue, setSliderValue] = useState(1.4);
+const ProductScanned: React.FC<Props> = ({ setProductScannedQuantity, defaultValueSlider, productCarbonFootprint }) => {
+  const [sliderValue, setSliderValue] = useState(defaultValueSlider);
 
   const emissionAmount =
     productCarbonFootprint < 1
@@ -29,7 +30,7 @@ const ProductScanned: React.FC<Props> = ({ setCo2eqKilograms, productCarbonFootp
 
   const onSliderValueChange = (value: number) => {
     setSliderValue(value);
-    setCo2eqKilograms(emissionAmount);
+    setProductScannedQuantity(Math.round(value));
   };
 
   const useMetricUnits = useSelector(userPreferences.selectors.getUseMetricUnits);

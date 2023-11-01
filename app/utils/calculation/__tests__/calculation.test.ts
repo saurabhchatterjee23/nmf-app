@@ -81,8 +81,9 @@ const emissionCustom: Emission = {
 
 const emissionProductScanned: Emission = {
   ...emissionFood,
+  carbonFootprint: 23.2,
   emissionModelType: "productScanned",
-  emissionType: EmissionType.custom,
+  emissionType: EmissionType.productScanned,
 };
 
 const imperialMetricBaseline: number[] = [
@@ -160,7 +161,7 @@ describe("getC02ValueFromEmission should return the correct co2 emitted value fo
   });
   it("product scanned emission", () => {
     expect(calculation.getC02ValueFromEmission(emissionProductScanned)).toEqual(
-      emissionProductScanned.value
+      emissionProductScanned.value * emissionProductScanned.carbonFootprint
     );
   });
 });
