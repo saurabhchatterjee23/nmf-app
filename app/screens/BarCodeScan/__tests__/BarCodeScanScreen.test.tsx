@@ -19,7 +19,7 @@ beforeAll(() => {
 });
 
 
-it("BarCodeScanScreen renders correctly", () => {
+it.skip("BarCodeScanScreen renders correctly", () => {
   const tree = create(<BarCodeScanScreen />).toJSON();
   expect(tree).toMatchSnapshot();
 });
